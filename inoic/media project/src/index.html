@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/ionic.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body ng-controller="mainCtrl">
+		<ion-header-bar class="bar-stable">
+			<div class="buttons">
+				<button class="button button-clear icon ion-ios-search-strong"></button>
+			</div>
+			<h1 class="title">我的书城</h1>
+			<div class="buttons">
+				<button class="button button-clear" ng-click="openModal()">登录</button>
+			</div>
+		</ion-header-bar>
+		<ion-content scroll="true" overflow-scroll="true" class="has-tabs">
+			<ion-slides options="options" slider="data.slider">
+				<ion-slide-page>
+					<img src="images/lunbo0.jpg">
+				</ion-slide-page>
+				<ion-slide-page>
+					<img src="images/lunbo1.jpg">
+				</ion-slide-page>
+				<ion-slide-page>
+					<img src="images/lunbo2.jpg">
+				</ion-slide-page>
+				<ion-slide-page>
+					<img src="images/lunbo3.jpg">
+				</ion-slide-page>
+				<ion-slide-page>
+					<img src="images/lunbo4.jpg">
+				</ion-slide-page>
+				<ion-slide-page>
+					<img src="images/lunbo5.jpg">
+				</ion-slide-page>
+			</ion-slides>
+			<div class="row">
+			  <div class="col">畅销排行榜</div>
+			</div>
+			<div class="button-bar">
+			  <a class="button" ng-click="classify(1)">技术</a>
+			  <a class="button" ng-click="classify(2)">动漫</a>
+			  <a class="button" ng-click="classify(3)">文学</a>
+			</div>
+			<ion-list>
+			  <ion-item ng-repeat="item in bookList" class="item-thumbnail-left">
+			    <img ng-src="{{'images/'+item.images[0].image_name}}">
+			    <h2>{{item.title}}</h2>
+			    <p>{{item.author}}</p>
+			    <div class="row">
+			    	<p class="price col-33">{{item.price | currency : "&yen"}}</p>
+			    	<button class="button button-assertive button-small button-outline col-33 col-offset-33">立即购买</button>
+			    </div>
+			  </ion-item>
+			</ion-list>
+		  	<ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="moreDataCanBeLoaded()">
+		  	</ion-infinite-scroll>
+		</ion-content>
+		<!-- <div class="tabs tabs-icon-top tabs-striped">
+		  	<a class="tab-item active">
+		  		<i class="icon ion-home"></i>
+		    	主页
+		  	</a>
+		  	<a class="tab-item">
+		  		<i class="icon ion-ios-cart"></i>
+		    	购物车
+		  	</a>
+		  	<a class="tab-item">
+		  		<i class="icon ion-person"></i>
+		    	我
+		  	</a>
+		</div> -->
+		<ion-tabs class="tabs-icon-top tabs-striped">
+			<ion-tab title="主页" icon="ion-home"></ion-tab>
+			<ion-tab title="购物车" icon="ion-ios-cart" badge="" badge-style="badge-dark"></ion-tab>
+			<ion-tab title="我" icon="ion-person"></ion-tab>
+		</ion-tabs>
+	</body>
+	<script src="js/ionic.bundle.min.js"></script>
+	<script src="js/style.js"></script>
+</html>

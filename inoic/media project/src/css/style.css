@@ -1,0 +1,10 @@
+ion-slides {
+	max-height: 20%;
+	width: 100%;
+}
+.swiper-slide img {
+	width: 100%;
+}
+p.price {
+	color: red;
+}
