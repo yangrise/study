@@ -1,0 +1,80 @@
+<div class="modal">
+	<ion-header-bar class="bar-stable">
+		<div class="buttons">
+			<button class="button icon ion-android-arrow-back" ng-click="closeModal('signin_modal')"></button>
+		</div>
+		<h1 class="title">注册</h1>
+	</ion-header-bar>
+	<ion-content>
+		<div class="list list-inset">
+		    <form name="signinForm" ng-submit="signinSubmit()">
+		    	<label class="item item-input">
+		    		<input type="text" placeholder="用户名" name="signinUsername" ng-model="userSignin.name" ng-required="true" ng-maxlength="12" ng-minlength="4" autocomplete="off" ng-pattern="/^\w{4,12}$/">
+		    	</label>
+		    	<p class="text-danger" ng-if="signinForm.signinUsername.$invalid && signinForm.signinUsername.$touched">
+		    		<i class="icon ion-close"></i>
+					用户名必须是4-12位的数字、字母、划线
+				</p>
+
+				<p class="text-success" ng-if="signinForm.signinUsername.$valid">
+		    		<i class="icon ion-checkmark-round"></i>
+					用户名可用
+				</p>
+		    	<label class="item item-input">
+		    		<input type="text" placeholder="密码" name="signinPassword" ng-model="userSignin.password" ng-required="true" ng-maxlength="12" ng-minlength="4" autocomplete="off" ng-pattern="/^\w{4,12}$/">
+		    	</label>
+		    	<p class="text-danger" ng-if="signinForm.signinPassword.$error.required && signinForm.signinPassword.$touched">
+					<i class="icon ion-close"></i>
+					密码不能为空
+				</p>
+		    	<p class="text-danger" ng-if="signinForm.signinPassword.$invalid && signinForm.signinPassword.$touched">
+		    		<i class="icon ion-close"></i>
+					密码必须是4-12位的数字、字母、下划线
+				</p>
+
+				<p class="text-success" ng-if="signinForm.signinPassword.$valid">
+		    		<i class="icon ion-checkmark-round"></i>
+					密码可用
+				</p>
+		    	<label class="item item-input">
+		    		<input type="text" placeholder="确认密码" name="signinRePassword" ng-model="userSignin.rePassword" ng-required="true">
+		    	</label>
+				<p class="text-danger" ng-if="!checkPwd() && signinForm.signinRePassword.$touched && signinForm.signinPassword.$valid">
+		    		<i class="icon ion-close"></i>
+					两次密码不一致
+				</p>
+				<p class="text-success" ng-if="checkPwd() && signinForm.signinRePassword.$touched">
+		    		<i class="icon ion-checkmark-round"></i>
+					密码一致
+				</p>
+				<label class="item item-input">
+				    <input type="text" placeholder="手机号码" name="signinPhoneNumber" ng-model="userSignin.tel" ng-required="true" ng-maxlength="11" ng-minlength="11" autocomplete="off" ng-pattern="/^\d{11}$/">
+				</label>
+				<p class="text-danger" ng-if="signinForm.signinPhoneNumber.$invalid && signinForm.signinPhoneNumber.$touched">
+		    		<i class="icon ion-close"></i>
+					手机号码必须是11位的数字
+				</p>
+
+				<p class="text-success" ng-if="signinForm.signinPhoneNumber.$valid">
+		    		<i class="icon ion-checkmark-round"></i>
+					手机号码可用
+				</p>
+		    	<label class="item item-input item-select">
+				  <div class="input-label">
+				    性别
+				  </div>
+				  <select ng-model="userSignin.sex" name="signinSex" ng-required="true">
+				    <option selected value="m">男</option>
+				    <option value="w">女</option>
+				  </select>
+				</label>
+		    </form>
+		  	<button class="button button-block button-calm" ng-disabled="signinForm.$invalid || !checkPwd()" ng-click="signinSubmit()">注册</button>
+		  	<div class="button-bar">
+		  		<button class="button button-positive button-clear" ng-click="closeModal('signin_modal')">登录</button>
+		  		<button class="button button-positive button-clear">帮助</button>
+		  	</div>
+		</div>
+
+	</ion-content>
+</div>

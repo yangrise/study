@@ -1,0 +1,63 @@
+<ion-content scroll="true" overflow-scroll="false" class="has-tabs">
+			<!-- <ion-slides options="options" slider="data.slider">
+				<ion-slide-page>
+					<img src="images/lunbo0.jpg">
+				</ion-slide-page>
+				<ion-slide-page>
+					<img src="images/lunbo1.jpg">
+				</ion-slide-page>
+				<ion-slide-page>
+					<img src="images/lunbo2.jpg">
+				</ion-slide-page>
+				<ion-slide-page>
+					<img src="images/lunbo3.jpg">
+				</ion-slide-page>
+				<ion-slide-page>
+					<img src="images/lunbo4.jpg">
+				</ion-slide-page>
+				<ion-slide-page>
+					<img src="images/lunbo5.jpg">
+				</ion-slide-page>
+			</ion-slides> -->
+			<ion-slide-box auto-play="true" does-continue="true" slide-interval=2000>
+			  <ion-slide>
+			  	<img src="images/lunbo0.jpg">
+			  </ion-slide>
+			  <ion-slide>
+			  	<img src="images/lunbo1.jpg">
+			  </ion-slide>
+			  <ion-slide>
+			  	<img src="images/lunbo2.jpg">
+			  </ion-slide>
+			  <ion-slide>
+			  	<img src="images/lunbo3.jpg">
+			  </ion-slide>
+			  <ion-slide>
+			  	<img src="images/lunbo4.jpg">
+			  </ion-slide>
+			  <ion-slide>
+			  	<img src="images/lunbo5.jpg">
+			  </ion-slide>
+			</ion-slide-box>
+			<div class="row">
+			  <div class="col">畅销排行榜</div>
+			</div>
+			<div class="button-bar">
+			  <a class="button" ng-click="classify(1)">技术</a>
+			  <a class="button" ng-click="classify(2)">动漫</a>
+			  <a class="button" ng-click="classify(3)">文学</a>
+			</div>
+			<ion-list>
+			  <ion-item ng-repeat="(index,item) in bookList" class="item-thumbnail-left" ng-click="openModal({{item.id}})">
+			    <img ng-src="{{'images/'+item.images[0].image_name}}">
+			    <h2>{{item.title}}</h2>
+			    <p>{{item.author}}</p>
+			    <div class="row">
+			    	<p class="price col-33">{{item.price | currency : "&yen"}}</p>
+			    	<button class="button button-assertive button-small button-outline col-33 col-offset-33">立即购买</button>
+			    </div>
+			  </ion-item>
+			</ion-list>
+		  	<ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="moreData">
+		  	</ion-infinite-scroll>
+		</ion-content>

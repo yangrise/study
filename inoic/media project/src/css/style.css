@@ -1,10 +1,30 @@
-ion-slides {
-	max-height: 20%;
+/* 设置轮播图的高度 */
+.slider {
+	max-height: 30%;
+}
+/* 使轮播图中的图片完整显示 */
+.slider img {
 	width: 100%;
 }
-.swiper-slide img {
-	width: 100%;
+/* 更改轮播图中小圆点的大小 */
+.slider span i {
+	font-size: 97%;
 }
+/* 改变价格文字的颜色 */
 p.price {
 	color: red;
+}
+/* 增加输入框图片与文字的距离,并改变图标的大小 */
+.item-input .icon {
+	min-width: 30px;
+	font-size: 150%;
+}
+.text-danger {
+	color: red;
+}
+.text-success {
+	color: green;
+}
+.particularsPic {
+	width: 100%;
 }
