@@ -1,63 +1,19 @@
-<ion-content scroll="true" overflow-scroll="false" class="has-tabs">
-			<!-- <ion-slides options="options" slider="data.slider">
-				<ion-slide-page>
-					<img src="images/lunbo0.jpg">
-				</ion-slide-page>
-				<ion-slide-page>
-					<img src="images/lunbo1.jpg">
-				</ion-slide-page>
-				<ion-slide-page>
-					<img src="images/lunbo2.jpg">
-				</ion-slide-page>
-				<ion-slide-page>
-					<img src="images/lunbo3.jpg">
-				</ion-slide-page>
-				<ion-slide-page>
-					<img src="images/lunbo4.jpg">
-				</ion-slide-page>
-				<ion-slide-page>
-					<img src="images/lunbo5.jpg">
-				</ion-slide-page>
-			</ion-slides> -->
-			<ion-slide-box auto-play="true" does-continue="true" slide-interval=2000>
-			  <ion-slide>
-			  	<img src="images/lunbo0.jpg">
-			  </ion-slide>
-			  <ion-slide>
-			  	<img src="images/lunbo1.jpg">
-			  </ion-slide>
-			  <ion-slide>
-			  	<img src="images/lunbo2.jpg">
-			  </ion-slide>
-			  <ion-slide>
-			  	<img src="images/lunbo3.jpg">
-			  </ion-slide>
-			  <ion-slide>
-			  	<img src="images/lunbo4.jpg">
-			  </ion-slide>
-			  <ion-slide>
-			  	<img src="images/lunbo5.jpg">
-			  </ion-slide>
-			</ion-slide-box>
-			<div class="row">
-			  <div class="col">畅销排行榜</div>
-			</div>
-			<div class="button-bar">
-			  <a class="button" ng-click="classify(1)">技术</a>
-			  <a class="button" ng-click="classify(2)">动漫</a>
-			  <a class="button" ng-click="classify(3)">文学</a>
-			</div>
-			<ion-list>
-			  <ion-item ng-repeat="(index,item) in bookList" class="item-thumbnail-left" ng-click="openModal({{item.id}})">
-			    <img ng-src="{{'images/'+item.images[0].image_name}}">
-			    <h2>{{item.title}}</h2>
-			    <p>{{item.author}}</p>
-			    <div class="row">
-			    	<p class="price col-33">{{item.price | currency : "&yen"}}</p>
-			    	<button class="button button-assertive button-small button-outline col-33 col-offset-33">立即购买</button>
-			    </div>
-			  </ion-item>
-			</ion-list>
-		  	<ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="moreData">
-		  	</ion-infinite-scroll>
-		</ion-content>
+<!-- 首页 -->
+<ion-header-bar class="bar-stable">
+	<div class="buttons">
+		<button class="button button-clear icon ion-ios-search-strong" ui-sref="search"></button>
+	</div>
+	<h1 class="title">我的商城</h1>
+	<div class="buttons">
+		<button class="button button-clear" ng-click="openModal('login_modal')" ng-if="!cookieshow()" >登录</button>
+		<button class="button button-clear" ng-click="openModal('signin_modal')" ng-if="!cookieshow()" >注册</button>
+		<button class="button button-clear" ng-if="cookieshow()">{{name.cook}}</button>
+		<button class="button button-clear button-assertive" ng-if="cookieshow()" ng-click="logout()">注销</button>
+	</div>
+</ion-header-bar>
+	<div ui-view="list"></div>
+<ion-tabs class="tabs-icon-top tabs-striped tabs-stable">
+	<ion-tab title="主页" icon="ion-home" ui-sref="home"></ion-tab>
+	<ion-tab title="购物车" icon="ion-ios-cart" badge="cartList.num" badge-style="badge-assertive" ui-sref="home.shoppingCart"></ion-tab>
+	<ion-tab title="我" icon="ion-person" ui-sref="home.my"></ion-tab>
+</ion-tabs>

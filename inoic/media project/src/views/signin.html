@@ -1,3 +1,4 @@
+<!-- 注册界面 -->
 <div class="modal">
 	<ion-header-bar class="bar-stable">
 		<div class="buttons">
@@ -7,13 +8,13 @@
 	</ion-header-bar>
 	<ion-content>
 		<div class="list list-inset">
-		    <form name="signinForm" ng-submit="signinSubmit()">
+		    <form name="signinForm">
 		    	<label class="item item-input">
-		    		<input type="text" placeholder="用户名" name="signinUsername" ng-model="userSignin.name" ng-required="true" ng-maxlength="12" ng-minlength="4" autocomplete="off" ng-pattern="/^\w{4,12}$/">
+		    		<input type="text" placeholder="用户名" name="signinUsername" ng-model="userSignin.name" ng-required="true" ng-maxlength="12" ng-minlength="4" autocomplete="off" ng-pattern="/^[\w\-\u4e00-\u9fa5]{4,}$/">
 		    	</label>
 		    	<p class="text-danger" ng-if="signinForm.signinUsername.$invalid && signinForm.signinUsername.$touched">
 		    		<i class="icon ion-close"></i>
-					用户名必须是4-12位的数字、字母、划线
+					用户名必须是4-12位的数字、字母、下划线、中文
 				</p>
 
 				<p class="text-success" ng-if="signinForm.signinUsername.$valid">
@@ -21,7 +22,7 @@
 					用户名可用
 				</p>
 		    	<label class="item item-input">
-		    		<input type="text" placeholder="密码" name="signinPassword" ng-model="userSignin.password" ng-required="true" ng-maxlength="12" ng-minlength="4" autocomplete="off" ng-pattern="/^\w{4,12}$/">
+		    		<input type="password" placeholder="密码" name="signinPassword" ng-model="userSignin.password" ng-required="true" ng-minlength="4" autocomplete="off" ng-pattern="/^\w{4,}$/">
 		    	</label>
 		    	<p class="text-danger" ng-if="signinForm.signinPassword.$error.required && signinForm.signinPassword.$touched">
 					<i class="icon ion-close"></i>
@@ -29,7 +30,7 @@
 				</p>
 		    	<p class="text-danger" ng-if="signinForm.signinPassword.$invalid && signinForm.signinPassword.$touched">
 		    		<i class="icon ion-close"></i>
-					密码必须是4-12位的数字、字母、下划线
+					密码必须是4位以上的数字、字母、下划线
 				</p>
 
 				<p class="text-success" ng-if="signinForm.signinPassword.$valid">
@@ -37,7 +38,7 @@
 					密码可用
 				</p>
 		    	<label class="item item-input">
-		    		<input type="text" placeholder="确认密码" name="signinRePassword" ng-model="userSignin.rePassword" ng-required="true">
+		    		<input type="password" placeholder="确认密码" name="signinRePassword" ng-model="userSignin.rePassword" ng-required="true">
 		    	</label>
 				<p class="text-danger" ng-if="!checkPwd() && signinForm.signinRePassword.$touched && signinForm.signinPassword.$valid">
 		    		<i class="icon ion-close"></i>
@@ -69,7 +70,7 @@
 				  </select>
 				</label>
 		    </form>
-		  	<button class="button button-block button-calm" ng-disabled="signinForm.$invalid || !checkPwd()" ng-click="signinSubmit()">注册</button>
+		  	<button class="button button-block button-calm" ng-disabled="signinForm.$invalid || !checkPwd()" ng-click="signinSubmit(signinForm)">注册</button>
 		  	<div class="button-bar">
 		  		<button class="button button-positive button-clear" ng-click="closeModal('signin_modal')">登录</button>
 		  		<button class="button button-positive button-clear">帮助</button>

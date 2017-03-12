@@ -1,0 +1,32 @@
+<!-- 评论页面 -->
+<div class="modal">
+	<ion-header-bar class="bar-stable">
+		<div class="buttons">
+			<button class="button icon ion-android-arrow-back" ng-click="closeModal()"></button>
+		</div>
+		<h1 class="title">评价</h1>
+	</ion-header-bar>
+	<ion-content>
+		<div class="list list-inset">
+		  <form name="commentForm">
+			<div class="list">
+			    <a class="item item-thumbnail-left" href="#">
+			  		<img ng-src="{{'images/'+orderList[ind][0].book_image}}">
+			  		<p>{{orderList[ind][0].book_title}}</p>
+			    </a>
+			</div>
+		  	<label class="item item-input">
+		  	  <input type="text" placeholder="标题" ng-model="userComment.title" ng-required="true">
+		  	</label>
+		  	<label class="item item-input">
+		  	  <textarea placeholder="评价" ng-model="userComment.content" ng-required="true" rows="10"></textarea>
+		  	</label>
+		  	<label class="item item-input">
+		  		<button class="button icon ion-camera button-large"></button>
+		  		发送照片
+		  	</label>
+		  	<button class="button button-block button-assertive" ng-click="commentSubmit(orderList[0][0].book_id)">提交评论</button>
+		  </form>
+		</div>
+	</ion-content>
+</div>
