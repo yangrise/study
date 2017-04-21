@@ -1,7 +1,0 @@
-/* TEAM */
-    Developer: Liujunhang
-
-/* THANKS*/
-
-    兄弟连
-    Site: http://www.lampbrother.net
